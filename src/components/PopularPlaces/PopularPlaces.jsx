@@ -1,4 +1,5 @@
 import React from 'react'
+import { useContext } from 'react';
 import { DotIcon, Location2Icon, MetroIcon, RedHeartIcon } from '../../assets/icons/Icons'
 import HomeImg1 from '../../assets/images/2599a4cb6a30a04d8552b6c12482a4f9f08660b8 2.png';
 import HomeImg2 from '../../assets/images/Image (1).png';
@@ -6,10 +7,14 @@ import HomeImg3 from '../../assets/images/Image (2).png';
 import HomeImg4 from '../../assets/images/Image (3).png';
 import HomeImg5 from '../../assets/images/Image (4).png';
 import HomeImg6 from '../../assets/images/Image (5).png';
+import { FormContext } from '../../context/FormContext';
 
 
 
 export const PopularPlaces = () => {
+
+  const { setIsFormActive} = useContext(FormContext);
+
   return (
     <div className='w-[1241px] px-[20px] mx-auto pt-[80px]'>
       <h2 className='font-semibold text-[40px] mb-[40px]'>Популярные объекты</h2>
@@ -49,7 +54,7 @@ export const PopularPlaces = () => {
               </li>
             </ul>
             <h3 className='text-[#228BE6] font-semibold text-[30px] my-[16px]'>180 500 000 сум</h3>
-            <button className='w-[347px] text-sky-600 bg-sky-100 px-[20px] py-[10px] rounded-lg'>Показать телефон</button>
+            <button onClick={() => setIsFormActive(true)} className='w-[347px] text-sky-600 bg-sky-100 px-[20px] py-[10px] rounded-lg'>Показать телефон</button>
           </div>
         </li>
         <li className='relative w-[387px] bg-white rounded-2xl'>
@@ -87,7 +92,7 @@ export const PopularPlaces = () => {
               </li>
             </ul>
             <h3 className='text-[#228BE6] font-semibold text-[30px] my-[16px]'>5 148 000 сум</h3>
-            <button className='w-[347px] text-sky-600 bg-sky-100 px-[20px] py-[10px] rounded-lg'>Показать телефон</button>
+            <button onClick={() => setIsFormActive(true)} className='w-[347px] text-sky-600 bg-sky-100 px-[20px] py-[10px] rounded-lg'>Показать телефон</button>
           </div>
         </li>
         <li className='relative w-[387px] bg-white rounded-2xl'>
@@ -125,7 +130,7 @@ export const PopularPlaces = () => {
               </li>
             </ul>
             <h3 className='text-[#228BE6] font-semibold text-[30px] my-[16px]'>7 200 000 сум</h3>
-            <button className='w-[347px] text-sky-600 bg-sky-100 px-[20px] py-[10px] rounded-lg'>Показать телефон</button>
+            <button onClick={() => setIsFormActive(true)} className='w-[347px] text-sky-600 bg-sky-100 px-[20px] py-[10px] rounded-lg'>Показать телефон</button>
           </div>
         </li>
         <li className='relative w-[387px] bg-white rounded-2xl'>
@@ -163,7 +168,7 @@ export const PopularPlaces = () => {
               </li>
             </ul>
             <h3 className='text-[#228BE6] font-semibold text-[30px] my-[16px]'>6 500 000 сум</h3>
-            <button className='w-[347px] text-sky-600 bg-sky-100 px-[20px] py-[10px] rounded-lg'>Показать телефон</button>
+            <button onClick={() => setIsFormActive(true)} className='w-[347px] text-sky-600 bg-sky-100 px-[20px] py-[10px] rounded-lg'>Показать телефон</button>
           </div>
         </li>
         <li className='relative w-[387px] bg-white rounded-2xl'>
@@ -201,7 +206,7 @@ export const PopularPlaces = () => {
               </li>
             </ul>
             <h3 className='text-[#228BE6] font-semibold text-[30px] my-[16px]'>7 000 000 сум</h3>
-            <button className='w-[347px] text-sky-600 bg-sky-100 px-[20px] py-[10px] rounded-lg'>Показать телефон</button>
+            <button onClick={() => setIsFormActive(true)} className='w-[347px] text-sky-600 bg-sky-100 px-[20px] py-[10px] rounded-lg'>Показать телефон</button>
           </div>
         </li>
         <li className='relative w-[387px] bg-white rounded-2xl'>
@@ -239,7 +244,7 @@ export const PopularPlaces = () => {
               </li>
             </ul>
             <h3 className='text-[#228BE6] font-semibold text-[30px] my-[16px]'>180 500 000 сум</h3>
-            <button className='w-[347px] text-sky-600 bg-sky-100 px-[20px] py-[10px] rounded-lg'>Показать телефон</button>
+            <button onClick={() => setIsFormActive(true)} className='w-[347px] text-sky-600 bg-sky-100 px-[20px] py-[10px] rounded-lg'>Показать телефон</button>
           </div>
         </li>
       </ul>

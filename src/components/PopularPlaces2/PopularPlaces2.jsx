@@ -9,8 +9,11 @@ import Img6 from '../../assets/images/Image (15).png';
 import Img7 from '../../assets/images/Image (16).png';
 import Img8 from '../../assets/images/Image (17).png';
 import Img9 from '../../assets/images/Image (18).png';
+import { useContext } from 'react';
+import { FormContext } from '../../context/FormContext';
 
 export const PopularPlaces2 = ({ filters }) => {
+
   const properties = [
     {
       id: 1,
@@ -77,23 +80,21 @@ export const PopularPlaces2 = ({ filters }) => {
     }
   ];
 
-  // Filter properties based on the filters prop
+  const {setIsFormActive} = useContext(FormContext);
+
   const filteredProperties = useMemo(() => {
     if (!filters) return properties;
 
     return properties.filter(property => {
-      // Filter by location/name
       const locationMatch = !filters.location || 
         property.name.toLowerCase().includes(filters.location.toLowerCase());
 
-      // Filter by minimum price
       const priceMatch = !filters.minPrice || property.price >= filters.minPrice;
 
       return locationMatch && priceMatch;
     });
   }, [filters, properties]);
 
-  // PropertyCard component for cleaner code
   const PropertyCard = ({ property }) => (
     <li className='relative w-[387px] bg-white rounded-2xl'>
       <img className='w-[387px] rounded-2xl' src={property.image} alt={property.name} />
@@ -134,7 +135,7 @@ export const PopularPlaces2 = ({ filters }) => {
         <h3 className='text-[#228BE6] font-semibold text-[30px] my-[16px]'>
           {property.priceText}
         </h3>
-        <button className='w-[347px] text-sky-600 bg-sky-100 px-[20px] py-[10px] rounded-lg'>
+        <button onClick={() => setIsFormActive(true)} className='w-[347px] text-sky-600 bg-sky-100 px-[20px] py-[10px] rounded-lg'>
           Показать телефон
         </button>
       </div>
@@ -166,7 +167,7 @@ export const PopularPlaces2 = ({ filters }) => {
           </ul>
           
           {filteredProperties.length > 6 && (
-            <button className='w-[168px] text-white bg-sky-600 px-[20px] py-[10px] rounded-xl mx-auto block my-[40px]'>
+            <button onClick={() => setIsFormActive(true)} className='w-[168px] text-white bg-sky-600 px-[20px] py-[10px] rounded-xl mx-auto block my-[40px]'>
               Показать еще
             </button>
           )}
