@@ -167,7 +167,7 @@ export const PopularPlaces2 = ({ filters }) => {
           </ul>
           
           {filteredProperties.length > 6 && (
-            <button onClick={() => setIsFormActive(true)} className='w-[168px] text-white bg-sky-600 px-[20px] py-[10px] rounded-xl mx-auto block my-[40px]'>
+            <button className='w-[168px] text-white bg-sky-600 px-[20px] py-[10px] rounded-xl mx-auto block my-[40px]'>
               Показать еще
             </button>
           )}
