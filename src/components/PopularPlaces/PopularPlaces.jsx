@@ -88,10 +88,13 @@ export const PopularPlaces = () => {
 
   if (loading) {
     return (
-      <div className='w-[1241px] px-[20px] mx-auto pt-[80px]'>
-        <h2 className='font-semibold text-[40px] mb-[40px]'>Популярные объекты</h2>
+      <div className='w-full max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto pt-16 sm:pt-20'>
+        <h2 className='font-semibold text-2xl sm:text-3xl lg:text-4xl mb-6 sm:mb-8 lg:mb-10'>Популярные объекты</h2>
+        <div className='mb-8 sm:mb-12'>
+          <Filter onFilterChange={handleFilterChange} />
+        </div>
         <div className='flex justify-center items-center h-64'>
-          <div className='text-xl'>Yuklanmoqda...</div>
+          <div className='text-lg sm:text-xl'>Yuklanmoqda...</div>
         </div>
       </div>
     );
@@ -99,95 +102,99 @@ export const PopularPlaces = () => {
 
   if (error) {
     return (
-      <div className='w-[1241px] px-[20px] mx-auto pt-[80px]'>
-        <h2 className='font-semibold text-[40px] mb-[40px]'>Популярные объекты</h2>
+      <div className='w-full max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto pt-16 sm:pt-20'>
+        <h2 className='font-semibold text-2xl sm:text-3xl lg:text-4xl mb-6 sm:mb-8 lg:mb-10'>Популярные объекты</h2>
+        <div className='mb-8 sm:mb-12'>
+          <Filter onFilterChange={handleFilterChange} />
+        </div>
         <div className='flex justify-center items-center h-64'>
-          <div className='text-red-500 text-xl'>{error}</div>
+          <div className='text-red-500 text-lg sm:text-xl'>{error}</div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className='w-[1241px] px-[20px] mx-auto pt-[80px] relative'>
-      <h2 className='font-semibold text-[40px]'>Популярные объекты</h2>
+    <div className='w-full max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto lg:pt-[80px] pt-[180px] sm:pt-20'>
+      <h2 className='font-semibold text-2xl sm:text-3xl lg:text-4xl mb-6 sm:mb-8 lg:mb-10'>Популярные объекты</h2>
       
-      <div className='absolute top-[-50px] left-[260px]'>
+      {/* Filter Component - Always in normal flow */}
+      <div className='mb-8 sm:mb-[100px] absolute top-[-150px] right-[20px] left-[20px] lg:top-[-80px] lg:left-[400px] lg:right-[400px]'>
         <Filter onFilterChange={handleFilterChange} />
       </div>
       
-      <div className='mt-[40px]'> {/* Add margin top to account for absolute positioned filter */}
+      <div>
         {filteredPlaces.length === 0 ? (
-          <div className='text-center text-gray-500 text-xl py-16'>
+          <div className='text-center text-gray-500 text-lg sm:text-xl py-16'>
             {popularPlaces.length === 0 ? 'Hozircha mashhur uylar yo\'q' : 'Filtrlarga mos uylar topilmadi'}
           </div>
         ) : (
-          <ul className='flex flex-wrap gap-[20px]'>
+          <ul className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8'>
             {filteredPlaces.map((place) => (
-              <li key={place.id} className='relative w-[387px] bg-white rounded-2xl shadow-lg'>
+              <li key={place.id} className='relative w-full max-w-sm mx-auto md:max-w-none bg-white rounded-2xl shadow-lg overflow-hidden'>
                 <div className='relative'>
                   {place.image_url ? (
                     <img 
-                      className='w-[387px] h-[250px] object-cover rounded-t-2xl' 
+                      className='w-full h-48 sm:h-56 lg:h-64 object-cover' 
                       src={place.image_url} 
                       alt={place.title}
                       onError={(e) => {
-                        e.target.src = 'https://via.placeholder.com/387x250?text=No+Image';
+                        e.target.src = 'https://via.placeholder.com/400x250?text=No+Image';
                       }}
                     />
                   ) : (
-                    <div className='w-[387px] h-[250px] bg-gray-200 rounded-t-2xl flex items-center justify-center'>
+                    <div className='w-full h-48 sm:h-56 lg:h-64 bg-gray-200 flex items-center justify-center'>
                       <span className='text-gray-500'>Rasm yo'q</span>
                     </div>
                   )}
                   
-                  <button className='absolute top-[15px] left-[15px] px-[12px] py-[8px] rounded-2xl bg-white text-[14px] font-medium'>
+                  <button className='absolute top-3 sm:top-4 left-3 sm:left-4 px-2 sm:px-3 py-1 sm:py-2 rounded-xl sm:rounded-2xl bg-white text-xs sm:text-sm font-medium'>
                     Застройщик
                   </button>
                   
-                  <span className='absolute top-[15px] right-[15px]'>
+                  <span className='absolute top-3 sm:top-4 right-3 sm:right-4'>
                     <RedHeartIcon />
                   </span>
                 </div>
                 
-                <div className='pt-[16px] pb-[20px] px-[20px]'>
-                  <h3 className='font-semibold text-[24px] mb-2'>{place.title}</h3>
+                <div className='p-4 sm:p-5 lg:p-6'>
+                  <h3 className='font-semibold text-lg sm:text-xl lg:text-2xl mb-2 sm:mb-3 line-clamp-2'>{place.title}</h3>
                   
                   {place.metro && (
-                    <div className='flex items-center gap-2 mt-[8px]'>
+                    <div className='flex items-center gap-2 mt-2'>
                       <MetroIcon />
-                      <p>{place.metro}</p>
+                      <p className='text-sm sm:text-base truncate'>{place.metro}</p>
                     </div>
                   )}
                   
-                  <div className='flex items-center gap-2'>
+                  <div className='flex items-center gap-2 mt-2'>
                     <Location2Icon />
-                    <p>{place.location}</p>
+                    <p className='text-sm sm:text-base truncate'>{place.location}</p>
                   </div>
                   
                   {place.rooms && (
-                    <div className='flex items-center gap-2 mt-1'>
+                    <div className='flex items-center gap-2 mt-2'>
                       <span className='text-sm text-gray-600'>🏠</span>
                       <p className='text-sm text-gray-600'>{place.rooms} xona</p>
                     </div>
                   )}
                   
-                  <ul className='flex items-center flex-wrap mt-[16px]'>
+                  <ul className='flex flex-wrap mt-3 sm:mt-4'>
                     {formatFeatures(place).map((feature, index) => (
-                      <li key={index} className='w-[168px] flex items-center gap-2 mb-2'>
+                      <li key={index} className='w-full sm:w-1/2 flex items-center gap-2 mb-2'>
                         <DotIcon />
-                        <p className='text-sm'>{feature}</p>
+                        <p className='text-xs sm:text-sm truncate'>{feature}</p>
                       </li>
                     ))}
                   </ul>
                   
-                  <h3 className='text-[#228BE6] font-semibold text-[30px] my-[16px]'>
+                  <h3 className='text-[#228BE6] font-semibold text-xl sm:text-2xl lg:text-3xl my-3 sm:my-4'>
                     {place.price}
                   </h3>
                   
                   <button 
                     onClick={() => setIsFormActive(true)} 
-                    className='w-[347px] text-sky-600 bg-sky-100 px-[20px] py-[10px] rounded-lg hover:bg-sky-200 transition-colors'
+                    className='w-full text-sky-600 bg-sky-100 px-4 sm:px-5 py-2 sm:py-3 rounded-lg hover:bg-sky-200 transition-colors text-sm sm:text-base'
                   >
                     Показать телефон
                   </button>
@@ -197,7 +204,7 @@ export const PopularPlaces = () => {
           </ul>
         )}
         
-        <button className='w-[168px] text-white bg-sky-600 px-[20px] py-[10px] rounded-xl mx-auto block my-[40px] hover:bg-sky-700 transition-colors'>
+        <button className='w-full max-w-xs text-white bg-sky-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl mx-auto block my-8 sm:my-10 lg:my-12 hover:bg-sky-700 transition-colors text-sm sm:text-base'>
           Показать еще
         </button>
       </div>
