@@ -16,7 +16,7 @@ export const Header = () => {
         <div className='flex items-center gap-2'>
           <LogoIconHeader />
           <h1 className='font-extrabold text-[#228BE6] text-base sm:text-lg lg:text-[18px]'>
-            Yangi uylar
+            Novostroykalar
           </h1>
         </div>
 
